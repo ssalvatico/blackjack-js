@@ -4,8 +4,7 @@ Juego simplificado de BlackJack (21) para 1 a 3 jugadores contra la computadora,
 
 ## 🎮 Demo
 
-> Agregá acá el link si lo publicás con GitHub Pages, por ejemplo:
-> `https://tu-usuario.github.io/blackjack-js/`
+> https://ssalvatico.github.io/blackjack-js/
 
 ## ✨ Características
 
