@@ -1,0 +1,32 @@
+html,body{
+    margin: 0px;
+    background-color: #2f4f30;
+    color: white;
+}
+
+.cabecera{
+    text-align: center;
+    color: antiquewhite;
+    background-color: black;
+    padding: 15px;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+}
+
+.carta{
+    position: relative;
+    width: 100px;
+    left: 100px;
+    margin-left: -75px;
+}
+
+.jugador-cartas{
+    height: 220px;
+}
+
+#boton-nuevo:hover,#boton-quedarse:hover,#boton-pedir:hover{
+    background-color:darkred;
+    color: antiquewhite;
+}
