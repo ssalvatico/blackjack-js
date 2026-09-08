@@ -1,3 +1,6 @@
+import _ from 'underscore';
+import './style.css';
+
 const moduloBlackJack = (() => {
     'use strict'
 
@@ -104,7 +107,7 @@ const moduloBlackJack = (() => {
         const nuevaCarta    = document.createElement('img');
         nuevaCarta.id       = carta;
         nuevaCarta.classList.add('carta');
-        nuevaCarta.src      = `assets/cartas/${carta}.png`;
+        nuevaCarta.src      = `/src/assets/cartas/${carta}.png`;
         jugadoresCartas[turno].append(nuevaCarta);
     };
 
