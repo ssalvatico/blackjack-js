@@ -1,6 +1,4 @@
-import generarMazo from './usecases/create-deck'
-import pedirCarta from './usecases/take-card';
-import valorCarta from './usecases/get-card-value';
+import {generarMazo, pedirCarta, actualizarPuntos, agregarCartaDOM} from './usecases/index'
 
 const moduloBlackJack = (() => {
     'use strict'
@@ -13,10 +11,9 @@ const moduloBlackJack = (() => {
      */
     
     // Variables globales
-    let mazo, puntosJugadores, turnoJugador = 0, jugadoresCartas, puntosHTML;
-    const cartasEspeciales    = ['A','J','Q','K'],
+    let mazo, puntosJugadores = [], turnoJugador = 0, jugadoresCartas, puntosHTML;
     // Botones
-          btnPedir        = document.querySelector('#boton-pedir'),
+    const btnPedir        = document.querySelector('#boton-pedir'),
           btnNuevo        = document.querySelector('#boton-nuevo'),
           btnQuedarse     = document.querySelector('#boton-quedarse');
 
@@ -49,36 +46,19 @@ const moduloBlackJack = (() => {
             alert('Inserte un numero válido de jugadores');
             throw('Entrada inválida');
         }
-        mazo = generarMazo(cartasEspeciales);
+        mazo = generarMazo();
         puntosJugadores = [];
         turnoJugador = 0;
         if(btnPedir.disabled && btnQuedarse.disabled) { switchBtns(); }
         for(let i = 0; i <= numJugadores; i++){
             puntosJugadores.push(0);
         }
-        console.log({puntosJugadores});
         crearJugadores(numJugadores);
     };
 
     ///////////////////////////////////////////////////////////////////////////
     // Funciones orientadas a las cartas///////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
-
-    // Actualizo los puntos al jugador correspondiente en el front
-    const actualizarPuntos = (puntos, turno) => {
-        puntosJugadores[turno] += puntos;
-        puntosHTML[turno].innerText = puntosJugadores[turno];
-        return puntosJugadores[turno];
-    };
-
-    // Renderizo la nueva carta del jugador correspondiente
-    const agregarCartaDOM = (carta, turno) => {   
-        const nuevaCarta    = document.createElement('img');
-        nuevaCarta.id       = carta;
-        nuevaCarta.classList.add('carta');
-        nuevaCarta.src      = `/public/assets/cartas/${carta}.png`;
-        jugadoresCartas[turno].append(nuevaCarta);
-    };
 
     ///////////////////////////////////////////////////////////////////////////
     // Funciones que manejan el juego /////////////////////////////////////////
@@ -125,15 +105,15 @@ const moduloBlackJack = (() => {
             alert(mensaje);
         }, 300);
     };
-
+    // puntosJugadores
     const turnoComputadora = () => {
         let puntosASuperar = Math.max(...puntosJugadores);
         let puntosCPU = 0;
         do {
             const carta = pedirCarta(mazo);
-            let turnocpu = puntosJugadores.length - 1;
-            puntosCPU = actualizarPuntos(valorCarta(carta, turnocpu), (turnocpu), puntosJugadores);
-            agregarCartaDOM(carta, turnocpu);
+            let turnoCPU = puntosJugadores.length - 1;
+            puntosCPU = actualizarPuntos(carta, turnoCPU, puntosJugadores, puntosHTML);
+            agregarCartaDOM(carta, turnoCPU, jugadoresCartas);
 
         } while ((puntosCPU < puntosASuperar) && (puntosCPU <= 21));
 
@@ -146,8 +126,8 @@ const moduloBlackJack = (() => {
 
     btnPedir.addEventListener('click', () => {
         const carta = pedirCarta(mazo);
-        const puntosJugador = actualizarPuntos(valorCarta(carta, turnoJugador), turnoJugador, puntosJugadores);
-        agregarCartaDOM(carta, turnoJugador);
+        const puntosJugador = actualizarPuntos(carta, turnoJugador, puntosJugadores, puntosHTML);
+        agregarCartaDOM(carta, turnoJugador, jugadoresCartas);
         if(puntosJugador >= 21){
             puntosJugadores[turnoJugador] = (puntosJugador > 21) ? 0 : puntosJugador;
             cederTurno();

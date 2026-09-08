@@ -1,12 +1,13 @@
 import { shuffle } from 'underscore';
 
+const cartasEspeciales    = ['A','J','Q','K']
+
 /**
  * Esta funcion crea un nuevo mazo y lo mezcla
- * @param {string[]} cartasEspeciales Ejemplo: ['A', 'J', 'Q', 'K'] 
+ * @param {string[]} cartasEspeciales  ['A', 'J', 'Q', 'K'] 
  * @returns {string[]}
  */
-const generarMazo = (cartasEspeciales) => {
-    if(!cartasEspeciales || cartasEspeciales.length <= 0) throw new Error('variable: cartasEspeciales inválido');
+export const generarMazo = () => {
     let mazo = [];
     for(let i = 2; i <= 10; i++){
         mazo.push(i + 'C');
@@ -22,5 +23,3 @@ const generarMazo = (cartasEspeciales) => {
     }
     return shuffle(mazo);
 };
-
-export default generarMazo;
