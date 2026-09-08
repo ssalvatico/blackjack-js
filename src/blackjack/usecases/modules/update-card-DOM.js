@@ -3,7 +3,7 @@
  * @param {string} carta 
  * @param {number} turno 
  * @param {NodeListOf<HTMLElement>} jugadoresCartas 
- * @return {void}
+ * @returns {void}
  */
 export const agregarCartaDOM = (carta, turno, jugadoresCartas) => {   
     const nuevaCarta    = document.createElement('img');
