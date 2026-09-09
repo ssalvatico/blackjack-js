@@ -17,7 +17,7 @@ export const switchBtns = () => {
  * @param {number} turnoJugador 
  * @param {number[]} puntosJugadores 
  * @param {NodeListOf<HTMLElement>} puntosHTML 
- * @param {NodeListOf<HTMLElement>} jugadoresCartas 
+ * @param {NodeListOf<Element>} jugadoresCartas 
  * @returns {number} Turno del jugador actual
  */
 export const cederTurno = (mazo, turnoJugador, puntosJugadores, puntosHTML, jugadoresCartas) => {

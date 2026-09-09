@@ -3,6 +3,13 @@ import { anunciarGanador } from './announce-winner';
 import { actualizarPuntos } from './card-values';
 import { pedirCarta } from './take-card';
 
+/**
+ * Simula la lógica del turno de la computadora
+ * @param {string[]} mazo 
+ * @param {number[]} puntosJugadores 
+ * @param {NodeListOf<HTMLElement>} puntosHTML 
+ * @param {NodeListOf<Element>} jugadoresCartas 
+ */
 export const turnoComputadora = (mazo, puntosJugadores, puntosHTML, jugadoresCartas) => {
     let puntosASuperar = Math.max(...puntosJugadores);
     let puntosCPU = 0;

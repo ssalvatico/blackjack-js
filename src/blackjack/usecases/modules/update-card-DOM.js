@@ -2,7 +2,7 @@
  * Renderiza la carta en el DOM
  * @param {string} carta 
  * @param {number} turno 
- * @param {NodeListOf<HTMLElement>} jugadoresCartas 
+ * @param {NodeListOf<Element>} jugadoresCartas 
  * @returns {void}
  */
 export const agregarCartaDOM = (carta, turno, jugadoresCartas) => {   

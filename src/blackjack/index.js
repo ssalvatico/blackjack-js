@@ -5,7 +5,21 @@ const moduloBlackJack = (() => {
     
     ///////////////////////////////////////////////////////////////////////////
 
-    let mazo, puntosJugadores = [], turnoJugador = 0, jugadoresCartas, puntosHTML;
+    /** @type {string[]} */
+    let mazo;
+    
+    /** @type {number[]} */
+    let puntosJugadores = [];
+    
+    /** @type {number} */
+    let turnoJugador = 0;
+    
+    /** @type {NodeListOf<Element>} */
+    let jugadoresCartas;
+    
+    /** @type {NodeListOf<HTMLElement>} */
+    let puntosHTML;
+    
     // Botones
     const btnPedir        = document.querySelector('#boton-pedir'),
           btnNuevo        = document.querySelector('#boton-nuevo'),
@@ -13,6 +27,10 @@ const moduloBlackJack = (() => {
     
     ///////////////////////////////////////////////////////////////////////////
 
+    /**
+     * Crea los jugadores en el DOM
+     * @param {number} numJugadores 
+     */
     const crearJugadores = (numJugadores) => {
         const cartas_computadora = document.querySelector('#cartas-computadora');
         const row_jugadores = document.querySelector('#row-jugadores');
@@ -32,6 +50,9 @@ const moduloBlackJack = (() => {
     
     ///////////////////////////////////////////////////////////////////////////
 
+    /**
+     * Inicia el juego de BlackJack
+     */
     const inicializarJuego = () => {
         let numJugadores = prompt('Inserte el numero de jugadores (1 a 3)', 1);
         if(!numJugadores || numJugadores < 1 || numJugadores > 3){
@@ -55,8 +76,10 @@ const moduloBlackJack = (() => {
         const puntosJugador = actualizarPuntos(carta, turnoJugador, puntosJugadores, puntosHTML);
         agregarCartaDOM(carta, turnoJugador, jugadoresCartas);
         if(puntosJugador >= 21){
-            puntosJugadores[turnoJugador] = (puntosJugador > 21) ? 0 : puntosJugador;
-            turnoJugador = cederTurno(mazo, turnoJugador, puntosJugadores, puntosHTML, jugadoresCartas);
+            setTimeout(()=>{
+                puntosJugadores[turnoJugador] = (puntosJugador > 21) ? 0 : puntosJugador;
+                turnoJugador = cederTurno(mazo, turnoJugador, puntosJugadores, puntosHTML, jugadoresCartas);
+            }, 300);
         }
     });
     
