@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/blackjack-js/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blackjack - Vite</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script type="module" crossorigin src="/blackjack-js/assets/index-DmJF_Sii.js"></script>
+    <link rel="stylesheet" crossorigin href="/blackjack-js/assets/index-CRLGaYbu.css">
+  </head>
+  <body>
+
+    <header class="cabecera">BlackJack</header>
+
+    <div id="botonera" class="row mt-2 text-center">
+        <div class="col mx-3">
+            <button id='boton-nuevo' class="btn btn-dark">Nuevo Juego</button>
+        </div>
+        <div class="col mx-3">
+            <button id='boton-pedir' class="btn btn-success" disabled>Pedir carta</button>
+        </div>
+        <div class="col mx-3">
+            <button id='boton-quedarse' class="btn btn-success" disabled>Quedarse</button>
+        </div>
+    </div>
+
+    <div id="seccion-jugadores">
+        <div id="row-jugadores" class="row mt-2 container-fluid text-center"></div>
+        <div class="row mt-2 container-fluid text-center">            
+            <div class="col">
+                <h3>Computadora: <small>0</small></h3>   
+                <div id="cartas-computadora" class="jugador-cartas"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="app"></div>
+  </body>
+</html>
