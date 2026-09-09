@@ -6,7 +6,7 @@ Juego de BlackJack (21) para 1 a 3 jugadores contra la computadora.
 
 ## 🎮 Demo
 
-> `https://ssalvatico.github.io/blackjack-js/`
+> https://ssalvatico.github.io/blackjack-js/
 
 ## ✨ Características
 
